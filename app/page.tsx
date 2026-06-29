@@ -39,7 +39,7 @@ export default function Dashboard() {
     setProjects(projectsData || []);
 
     // 2. Calculate capacity status
-    const summary = bandwidthData?.map((team) => {
+    const summary = bandwidthData?.map((team: { team_name: string; max_weekly_hours: number; }) => {
       const used = projectsData?.reduce(
         (acc, p) => acc + (p[`${team.team_name.toLowerCase()}_hours`] || 0),
         0,
